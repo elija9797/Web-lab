@@ -1,0 +1,54 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:linear-gradient(purple,blue);
+    height:100vh;
+}
+
+nav{
+    width:90%;
+    margin:50px auto;
+    background:white;
+    border-radius:5px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:space-around;
+}
+
+nav ul li{
+    position:relative;
+}
+
+nav ul li a{
+    display:block;
+    padding:20px 30px;
+    text-decoration:none;
+    color:black;
+    font-weight:bold;
+}
+
+.dropdown{
+    display:none;
+    position:absolute;
+    background:white;
+    width:180px;
+}
+
+.dropdown li{
+    width:100%;
+}
+
+.dropdown li a{
+    padding:12px;
+}
+
+nav ul li:hover .dropdown{
+    display:block;
+}

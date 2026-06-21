@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AJAX Example</title>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<button>Load Data</button>
+
+<div id="result"></div>
+
+<script>
+
+$(document).ready(function(){
+
+$("button").click(function(){
+
+$("#result").load("data.txt");
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

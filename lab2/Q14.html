@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clone and Remove Table Row</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+        }
+
+        .add-btn {
+            margin-top: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Product Table</h2>
+
+<table id="productTable">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>
+                <select>
+                    <option>Select Product</option>
+                    <option>Laptop</option>
+                    <option>Mobile</option>
+                    <option>Keyboard</option>
+                </select>
+            </td>
+            <td><input type="text"></td>
+            <td>
+                <button class="delete-btn" onclick="removeRow(this)">
+                    🗑
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="add-btn" onclick="addRow()">Add New</button>
+
+<script>
+    function addRow() {
+        let tableBody = document.querySelector("#productTable tbody");
+        let lastRow = tableBody.rows[tableBody.rows.length - 1];
+
+        // Clone last row
+        let newRow = lastRow.cloneNode(true);
+
+        // Clear input field
+        newRow.querySelector("input").value = "";
+
+        // Reset dropdown
+        newRow.querySelector("select").selectedIndex = 0;
+
+        tableBody.appendChild(newRow);
+
+        updateNumbers();
+    }
+
+    function removeRow(btn) {
+        let tableBody = document.querySelector("#productTable tbody");
+
+        if (tableBody.rows.length > 1) {
+            btn.closest("tr").remove();
+            updateNumbers();
+        } else {
+            alert("At least one row must remain.");
+        }
+    }
+
+    function updateNumbers() {
+        let rows = document.querySelectorAll("#productTable tbody tr");
+
+        rows.forEach((row, index) => {
+            row.cells[0].innerText = index + 1;
+        });
+    }
+</script>
+
+</body>
+</html>

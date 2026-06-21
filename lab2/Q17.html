@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Navigator Object</title>
+</head>
+<body>
+
+<h2>Browser Information</h2>
+
+<p id="browser"></p>
+<p id="version"></p>
+<p id="platform"></p>
+<p id="location"></p>
+
+<script>
+
+document.getElementById("browser").innerHTML =
+"Browser Name: " + navigator.appName;
+
+document.getElementById("version").innerHTML =
+"Browser Version: " + navigator.appVersion;
+
+document.getElementById("platform").innerHTML =
+"Platform(OS): " + navigator.platform;
+
+if(navigator.geolocation)
+{
+    navigator.geolocation.getCurrentPosition(
+    function(position)
+    {
+        document.getElementById("location").innerHTML =
+        "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+    });
+}
+else
+{
+    document.getElementById("location").innerHTML =
+    "Geolocation not supported";
+}
+
+</script>
+
+</body>
+</html>

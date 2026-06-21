@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Screen Information</title>
+</head>
+<body>
+
+<h2>Screen Information</h2>
+
+<button onclick="showInfo()">Show Details</button>
+
+<p id="demo"></p>
+
+<script>
+function showInfo() {
+    document.getElementById("demo").innerHTML =
+        "Screen Width = " + screen.width + "<br>" +
+        "Screen Height = " + screen.height + "<br>" +
+        "Available Screen Width = " + screen.availWidth;
+}
+</script>
+
+</body>
+</html>

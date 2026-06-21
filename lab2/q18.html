@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open Website in New Tab</title>
+</head>
+<body>
+
+<h2>Open Website</h2>
+
+<input type="text" id="url" placeholder="Enter website URL">
+<button onclick="openWebsite()">Open Website</button>
+
+<script>
+function openWebsite() {
+    let website = document.getElementById("url").value;
+
+    // Add https:// if user doesn't type it
+    if (!website.startsWith("http://") && !website.startsWith("https://")) {
+        website = "https://" + website;
+    }
+
+    window.open(website, "_blank");
+}
+</script>
+
+</body>
+</html>

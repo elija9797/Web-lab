@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container{
+display:flex;
+flex-wrap:wrap;
+width:700px;
+}
+
+.box{
+width:60px;
+height:60px;
+margin:2px;
+text-align:center;
+line-height:60px;
+font-size:20px;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="container"></div>
+
+<script>
+
+function isPrime(num){
+if(num<2) return false;
+
+for(let i=2;i<=Math.sqrt(num);i++){
+if(num%i==0)
+return false;
+}
+return true;
+}
+
+let container=document.getElementById("container");
+
+for(let i=0;i<=100;i++){
+
+let div=document.createElement("div");
+div.className="box";
+div.textContent=i;
+
+if(isPrime(i))
+div.style.background="red";
+else if(i%2==0)
+div.style.background="green";
+else
+div.style.background="yellow";
+
+container.appendChild(div);
+
+}
+
+</script>
+
+</body>
+</html>

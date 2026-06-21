@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+
+    <style>
+        body{
+            font-family:Arial;
+        }
+
+        form{
+            width:500px;
+            margin:auto;
+            border:1px solid black;
+            padding:20px;
+        }
+
+        input, select{
+            width:100%;
+            padding:8px;
+            margin-bottom:10px;
+        }
+
+        .error{
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+
+<form onsubmit="return validateForm()">
+
+<h2>Registration Form</h2>
+
+Name:
+<input type="text" id="name">
+
+Address:
+<input type="text" id="address">
+
+Username:
+<input type="text" id="username">
+
+Email:
+<input type="text" id="email">
+
+Password:
+<input type="password" id="password">
+
+Website:
+<input type="url" id="website">
+
+Phone:
+<input type="text" id="phone">
+
+Gender:
+<input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female"> Female
+<br><br>
+
+Course:
+<select id="course">
+    <option value="">Select Course</option>
+    <option>BCA</option>
+    <option>BSc IT</option>
+    <option>MCA</option>
+</select>
+
+<input type="submit" value="Submit">
+
+<p id="msg" class="error"></p>
+
+</form>
+
+<script>
+
+function validateForm()
+{
+    let name = document.getElementById("name").value.trim();
+    let address = document.getElementById("address").value.trim();
+    let username = document.getElementById("username").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
+    let phone = document.getElementById("phone").value.trim();
+    let course = document.getElementById("course").value;
+
+    let msg = document.getElementById("msg");
+
+    // Name
+    if(name=="" || /\d/.test(name))
+    {
+        msg.innerHTML="Invalid Name";
+        return false;
+    }
+
+    // Username
+    if(!/^[A-Za-z0-9_]+$/.test(username))
+    {
+        msg.innerHTML="Invalid Username";
+        return false;
+    }
+
+    // Phone
+    if(!/^[9876][0-9]{9}$/.test(phone))
+    {
+        msg.innerHTML="Invalid Phone Number";
+        return false;
+    }
+
+    // Gender
+    let gender=document.getElementsByName("gender");
+    let selected=false;
+
+    for(let i=0;i<gender.length;i++)
+    {
+        if(gender[i].checked)
+        {
+            selected=true;
+        }
+    }
+
+    if(!selected)
+    {
+        msg.innerHTML="Select Gender";
+        return false;
+    }
+
+    // Address
+    if(address=="")
+    {
+        msg.innerHTML="Address Required";
+        return false;
+    }
+
+    // Email
+    if(email=="" || !email.includes("@"))
+    {
+        msg.innerHTML="Invalid Email";
+        return false;
+    }
+
+    // Password
+    let passPattern =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,}$/;
+
+    if(!passPattern.test(password))
+    {
+        msg.innerHTML="Invalid Password";
+        return false;
+    }
+
+    // Course
+    if(course=="")
+    {
+        msg.innerHTML="Select Course";
+        return false;
+    }
+
+    alert("Form Submitted Successfully");
+    return true;
+}
+
+</script>
+
+</body>
+</html>

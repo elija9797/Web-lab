@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+body{
+text-align:center;
+font-family:Arial;
+}
+
+button{
+padding:10px 20px;
+font-size:20px;
+margin:10px;
+}
+
+#count{
+font-size:40px;
+font-weight:bold;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Counter Program</h1>
+
+<h2 id="count">0</h2>
+
+<button onclick="increase()">Increase</button>
+<button onclick="decrease()">Decrease</button>
+<button onclick="resetCounter()">Reset</button>
+
+<script>
+
+let count=0;
+
+function increase(){
+count++;
+document.getElementById("count").innerHTML=count;
+}
+
+function decrease(){
+count--;
+document.getElementById("count").innerHTML=count;
+}
+
+function resetCounter(){
+count=0;
+document.getElementById("count").innerHTML=count;
+}
+
+</script>
+
+</body>
+</html>

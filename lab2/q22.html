@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Gallery</title>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+.main{
+width:400px;
+height:250px;
+}
+
+.thumb{
+width:100px;
+height:70px;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<img src="image1.jpg" id="mainImage" class="main">
+
+<br><br>
+
+<img src="image1.jpg" class="thumb">
+<img src="image2.jpg" class="thumb">
+<img src="image3.jpg" class="thumb">
+
+<script>
+
+$(document).ready(function(){
+
+$(".thumb").click(function(){
+
+let img=$(this).attr("src");
+
+$("#mainImage").attr("src",img);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
